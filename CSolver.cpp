@@ -35,7 +35,7 @@ bool CSolver::checkCol(int col)
 	// Column must range from 0 to 8. Note that the column index starts from 0, not 1
 	if ( (col < 0) || (col > 8) )
 	{
-		perror("CSolver - Warning: col is out of bound");
+		perror("CSolver - Warning: col is out of bound\n");
 		return -1;
 	}
 

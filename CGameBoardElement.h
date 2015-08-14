@@ -25,7 +25,14 @@ class CGameBoardElement
 		 * 'Trial' is used to indicate the number of this element is under evaluation by the sovler, and may change in the future.
 		 *  Only 'Given' and 'Found' state is final values. Value with 'Trial' flag can be changed.
 		 */
-		States state; 
+		States state;
+
+		// Contains possible numbers that can end up in the board.
+		std::set<int> possibilities; 
+		
+		// Stores value that is under evaluation.
+		int eval_storage; 
+
 
 	public:
 		// Constructor
@@ -34,6 +41,7 @@ class CGameBoardElement
 		// Setters
 		int set_number(int newNumber);
 		int set_state(States newState);
+		int set_evalStorage (int pulledOutNumber);
 
 		// Getters
 		int get_number();
