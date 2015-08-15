@@ -37,6 +37,7 @@ class CGameBoardElement
 	public:
 		// Constructor
 		CGameBoardElement();
+		CGameBoardElement(int _num);
 
 		// Setters
 		int set_number(int newNumber);

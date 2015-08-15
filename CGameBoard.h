@@ -8,7 +8,7 @@
 class CGameBoard 
 {
 	private:
-		CGameBoardElement board[BOARDSIZE][BOARDSIZE];
+		CGameBoardElement* board[BOARDSIZE][BOARDSIZE];
 
 	public:
 		CGameBoard();

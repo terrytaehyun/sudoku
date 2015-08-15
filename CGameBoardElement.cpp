@@ -9,6 +9,14 @@ CGameBoardElement::CGameBoardElement()
 {
 	number = 0;
 	state = Empty;
+	eval_storage = 0;
+}
+
+CGameBoardElement::CGameBoardElement(int _num)
+{	
+	number = _num;
+	state = Given;
+	eval_storage = 0;
 }
 
 
