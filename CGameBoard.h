@@ -12,8 +12,8 @@ class CGameBoard
 
 	public:
 		CGameBoard();
-		CGameBoardElement get_element(int row, int col);
-		CGameBoardElement set_element(int row, int col, CGameBoardElement newElement);
+		CGameBoardElement* get_element(int row, int col);
+		void set_element(int row, int col, CGameBoardElement* newElement);
 };
 
 #endif

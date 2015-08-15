@@ -1,6 +1,8 @@
 #ifndef CGAMEBOARDELEMENT_H
 #define CGAMEBOARDELEMENT_H
 
+#include <set>
+
 enum States 
 {
 	Empty,

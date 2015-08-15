@@ -1,6 +1,9 @@
 #include "CGameBoard.h"
 
-Class CSolver
+#ifndef CSOLVER_H
+#define CSOLVER_H
+
+class CSolver
 {
 
 	private:
@@ -13,3 +16,5 @@ Class CSolver
 		bool checkSquare(int squareNum);
 
 };
+
+#endif

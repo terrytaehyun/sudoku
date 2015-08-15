@@ -9,6 +9,8 @@ CSolver::CSolver()
 bool CSolver::checkRow(int row)
 {
 	int numbersAtRow[BOARDSIZE];
+	CGameBoardElement* pGameBoardElem_temp = NULL;
+
 
 	// Row must range from 0 to 8. Note that the row index starts from 0, not 1
 	if ( (row < 0) || (row > 8) )
@@ -20,7 +22,8 @@ bool CSolver::checkRow(int row)
 	// Copying over the row we want to evaluate
 	for (int col = 0; col < BOARDSIZE; col++)
 	{
-		numbersAtRow[col] = sudokuBoard.get_element(row, col);
+		pGameBoardElem_temp = sudokuBoard.get_element(row, col);
+		numbersAtRow[col] = (*pGameBoardElem_temp).get_number();
 	}
 
 	// Checking for correctness (Array must contain all numbers in range of 1-9 without any repeats)
@@ -31,6 +34,7 @@ bool CSolver::checkRow(int row)
 bool CSolver::checkCol(int col)
 {
 	int numbersAtCol[BOARDSIZE];
+	CGameBoardElement* pGameBoardElem_temp = NULL;
 
 	// Column must range from 0 to 8. Note that the column index starts from 0, not 1
 	if ( (col < 0) || (col > 8) )
@@ -42,7 +46,8 @@ bool CSolver::checkCol(int col)
 	// Copying over the column we want to evaluate
 	for (int row = 0; row < BOARDSIZE;  row++)
 	{
-		numbersAtCol[row] = sudokuBoard.get_element(row, col);
+		pGameBoardElem_temp = sudokuBoard.get_element(row, col);
+		numbersAtCol[row] = (*pGameBoardElem_temp).get_number();
 	}
 
 	// Checking for correctness (Array must contain all numbers in range of 1-9 without any repeats)

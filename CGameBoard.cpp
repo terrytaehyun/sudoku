@@ -6,12 +6,12 @@ CGameBoard::CGameBoard()
 
 }
 
-CGameBoardElement CGameBoard::get_element(int row, int col)
+CGameBoardElement* CGameBoard::get_element(int row, int col)
 {
 	return board[row][col];
 }
 
-CGameBoardElement CGameBoard::set_element(int row, int col, CGameBoardElement* newElement)
+void CGameBoard::set_element(int row, int col, CGameBoardElement* newElement)
 {
 	board[row][col] = newElement;
 }
