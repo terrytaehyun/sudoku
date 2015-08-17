@@ -17,6 +17,8 @@ class CSolver
 		bool checkCol(int col);
 		bool checkSquare(int squareNum);
 
+		std::set<int> calculatePossibilities(int row, int col);
+
 		int loadBoard();
 		void printBoard();
 

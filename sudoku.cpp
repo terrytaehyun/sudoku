@@ -12,6 +12,8 @@ int main()
 {
 	CSolver sudoku;
 	bool isCorrect;
+	std::set<int> testSet_poss;
+	std::set<int>::iterator it;
 
 	sudoku.printBoard();
 	for(int row = 0; row < BOARDSIZE; row++)
@@ -52,6 +54,19 @@ int main()
 			cout << "Entries at squareNum: " << squareNum << " is Incorrect!" << endl;	
 		}
 	}
+
+	for (int row = 0; row < BOARDSIZE; row++)
+	{
+		for (int col = 0; col < BOARDSIZE; col++)
+		{
+			testSet_poss = sudoku.calculatePossibilities(row,col);		
+
+  			for (it=testSet_poss.begin(); it!=testSet_poss.end(); ++it)
+    			std::cout << ' ' << *it;
+    		cout<<endl;
+		}
+	}
+	
 
 	// For holding the screen
 	char ch;

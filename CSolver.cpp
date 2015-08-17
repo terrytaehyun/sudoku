@@ -230,15 +230,71 @@ bool CSolver::checkSquare(int squareNum)
 	{
 		return false;
 	}
+}
 
-	 	
+std::set<int> CSolver::calculatePossibilities(int row, int col) //NEED DEBUGGING HERE
+{
+	CGameBoardElement* pCurElement = (*sudokuBoard).get_element(row, col);
+	CGameBoardElement* pElement = NULL;
+	std::set<int> possibilitySet;
+	int row_iter, col_iter, sqr_iter;
+	int numberFromBoard;
 
+	int squreNum;
+	int row_offset_scale, col_offset_scale;
+	int rowScale, colScale;
+
+	// Check if element already has value in
+	if ((*pCurElement).get_number() != 0)
+	{	
+		perror("CSolver - Error: Element already has a value in\n");
+		return std::set<int>(); //return empty (using default constructor)
+	}
+
+	// First Insert All possible value range to the set
+	for (int number = 1; number < 10; number++)
+	{
+		possibilitySet.insert(number);
+	}
+
+	// Iterate through rows and remove already present values
+	for (row_iter = 0; row_iter < BOARDSIZE; row_iter++)
+	{
+		pElement = (*sudokuBoard).get_element(row_iter, col);
+		numberFromBoard = (*pElement).get_number();
+		possibilitySet.erase(numberFromBoard);
+	}
+
+	// Iterate through cols and remove already present values
+	for (col_iter = 0; col_iter < BOARDSIZE; col_iter++)
+	{
+		pElement = (*sudokuBoard).get_element(row, col_iter);
+		numberFromBoard = (*pElement).get_number();
+		possibilitySet.erase(numberFromBoard);
+	}
+
+	// Iterate through square elements and remove already present values
+	rowScale = row/3;
+	colScale = col/3;
+	
+	for (row_iter = 0 ; row_iter < 3 ; row_iter++)
+	{
+		for (col_iter = 0 ; col_iter < 3; col_iter++)
+		{
+			pElement = (*sudokuBoard).get_element(row_iter + 3*rowScale, col_iter + 3*colScale);
+			numberFromBoard = (*pElement).get_number();
+			possibilitySet.erase(numberFromBoard);
+		}
+	}
+
+
+	return possibilitySet;
 }
 
 int CSolver::loadBoard ()
 {
-	ifstream sampleBoard ("boardSample2_ans.txt", std::ifstream::in);
-	// ifstream sampleBoard ("boardSample1.txt", std::ifstream::in);
+	// ifstream sampleBoard ("boardSample2_ans.txt", std::ifstream::in);
+	ifstream sampleBoard ("boardSample1.txt", std::ifstream::in);
 	CGameBoardElement* pNewElement;
 
 	int data;
